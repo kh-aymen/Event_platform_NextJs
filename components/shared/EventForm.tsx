@@ -79,27 +79,27 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             }
         }
 
-        // if (type === 'Update') {
-        //     if (!eventId) {
-        //         router.back()
-        //         return;
-        //     }
+        if (type === 'Update') {
+            if (!eventId) {
+                router.back()
+                return;
+            }
 
-        //     try {
-        //         const updatedEvent = await updateEvent({
-        //             userId,
-        //             event: { ...values, imageUrl: uploadedImageUrl, _id: eventId },
-        //             path: `/events/${eventId}`
-        //         })
+            try {
+                const updatedEvent = await updateEvent({
+                    userId,
+                    event: { ...values, imageUrl: uploadedImageUrl, _id: eventId },
+                    path: `/events/${eventId}`
+                })
 
-        //         if (updatedEvent) {
-        //             form.reset();
-        //             router.push(`/events/${updatedEvent._id}`)
-        //         }
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // }
+                if (updatedEvent) {
+                    form.reset();
+                    router.push(`/events/${updatedEvent._id}`)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }
 
     return (
